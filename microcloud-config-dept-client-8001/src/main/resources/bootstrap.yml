@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      name: microcloud-config-dept-client #定义要读取的资源文件的名称
+      profile: dev  #定义profile的名称
+      label: master #定义仓库分支名称
+      uri: http://config-7101.com:7101/ #访问springConfig server地址
+      username: liuxc  #认证用户名
+      password: liuxc  #认证密码

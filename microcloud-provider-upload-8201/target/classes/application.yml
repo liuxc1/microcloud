@@ -1,0 +1,27 @@
+server:
+  port: 8201
+
+spring:
+  application:
+    name: microcloud-provider-upload
+  http:
+   multipart:
+      enabled: true #启动http上传
+      max-file-size: 100MB #设置单个文件最大长度
+      max-request-size: 100MB #设置最大请求上传文件为100MB
+      file-size-threshold: 1MB #当文件上传达到1MB时进行磁盘写入
+      location: / #上传临时文件路径
+  
+eureka:
+  client: #客服端进行EureKa服务配置
+    service-url:
+      defaultZone: http://eureka:eureka@eureka-7001.com:7001/eureka/,http://eureka:eureka@eureka-7002.com:7002/eureka/,http://eureka:eureka@eureka-7003.com:7003/eureka/  #加入了认证用户和密码的请求连接
+  instance:
+    lease-renewal-interval-in-seconds: 30 #设置心跳间隔时间，默认是30秒
+    lease-expiration-duration-in-seconds: 90 #心跳间隔周期，默认是90秒
+    instance-id: provider-8201.com    #在信息列表中显示主机名称
+    prefer-ip-address: true     #访问的路径变成ip地址
+info:
+  app.name: microcloud-provider
+  app.version: 0.0.1
+  app.artifactId: microcloud-provider-upload-8201

@@ -1,0 +1,43 @@
+server:
+  port: 8001
+eureka:
+  client: #客服端进行EureKa服务配置
+    service-url:
+      defaultZone: http://eureka:eureka@eureka-7001.com:7001/eureka/,http://eureka:eureka@eureka-7002.com:7002/eureka/,http://eureka:eureka@eureka-7003.com:7003/eureka/  #加入了认证用户和密码的请求连接
+  instance:
+    lease-renewal-interval-in-seconds: 30 #设置心跳间隔时间，默认是30秒
+    lease-expiration-duration-in-seconds: 90 #心跳间隔周期，默认是90秒
+    instance-id: provider-8001.com    #在信息列表中显示主机名称
+    prefer-ip-address: true     #访问的路径变成ip地址
+      
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml      #mybatis的配置文件路径    
+  type-aliases-package: com.liuxc.microcloud.api            #配置vo下对象的别名
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml                      #扫面mapper文件下的路径
+    
+spring:
+  application:
+    name: microcloud-provider-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource           #配置当前要操作的数据源的类型
+    driver-class-name: com.mysql.jdbc.Driver               #配置驱动类
+    url: jdbc:mysql://localhost:3306/master?useUnicode=true&amp;characterEncoding=UTF-8&useSSL=false #配置数据库连接地址
+    username: liuxc                                          #配置数据库连接用户名
+    password: liuxc                                          #配置数据库连接用户密码
+    dbcp2:
+      min-idle: 5                                          #配置连接池最小连接数
+      initial-size: 5                                      #配置连接池初始化连接数
+      max-total: 12                                        #配置连接池最大连接数
+      max-wait-millis: 2000                                #配置最大超时断开时间
+      
+info:
+  app.name: microcloud-provider
+  app.version: $project.version$
+  app.artifactId: $project.artifactId$
+    
+
+    
+   
+    
+    

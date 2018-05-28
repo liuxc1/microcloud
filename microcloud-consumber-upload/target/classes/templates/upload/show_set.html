@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="icon" type="image/x-icon"  href="/images/l.ico"/>
+<title>thymeleaf模板渲染</title>
+<style type="text/css">
+td{
+border:1px solid #F00;	
+}
+</style>
+</head>
+<body>
+	<p th:text="${#sets.contains(set2,'lxc-1')}"/><!-- 判断指定的key是否存在 -->
+	<p th:text="${set2[0]}"/><!-- 根据索引获取值 -->
+	<p th:text="${#sets.size(set2)}"/><!--获取集合的size  -->
+	<hr/>
+	<p th:text="${#strings.replace('www.lxc.com','.','$')}"></p>
+	<p th:text="${#strings.toUpperCase('www.lxc.com')}"></p>
+	<p th:text="${#strings.trim('www.lxc.com   ')}"></p>
+	<hr/>
+	<p th:text="${#dates.format(myDate,'yyyy-mm-dd')}"></p>
+	<p th:text="${#dates.format(myDate,'yyyy-mm-dd HH:MM:SS')}"></p>
+</body>
+</html>

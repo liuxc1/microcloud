@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="icon" type="image/x-icon"  href="/images/l.ico"/>
+<title>thymeleaf模板渲染</title>
+</head>
+<body>
+	<p th:text="'request对象：'+${#httpServletRequest.getRemoteAddr()}"></p>
+	<p th:text="'Session对象：'+${#httpSession.getId()}"></p>
+	<p th:text="'application对象：'+${#httpServletRequest.getServletContext().getRealPath('/')}"></p>
+	<hr/>
+	<p th:text="'model_url:'+${model_url}"></p>
+	<p th:text="'request_url:'+${request_url}"></p>
+	<p th:text="'session_url:'+${session.session_url}"></p>
+	<p th:text="'application_url:'+${application.application_url}"></p>
+</body>
+</html>

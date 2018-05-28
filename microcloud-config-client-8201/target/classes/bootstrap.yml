@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      name: microcloud-config-client #定义要读取的资源文件的名称
+      profile: bate  #定义profile的名称
+      label: master #定义仓库分支名称
+      #uri: http://config-7101.com:7101/ #访问springConfig server地址
+      username: liuxc  #认证用户名
+      password: liuxc  #认证密码
+      discovery:
+        enabled: true #启动在配置中心加载配置文件
+        service-id: MICROCLOUD-CONFIG #eureka配置中心的注册名称
+eureka:
+  client: #目的是为了让客户端通过eureka找到SpringCloudConfig微服务
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka:eureka@eureka-7005.com:7005/eureka/

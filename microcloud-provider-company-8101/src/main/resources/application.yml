@@ -1,0 +1,18 @@
+server:
+  port: 8101
+eureka:
+  client: #客服端进行EureKa服务配置
+    service-url:
+      defaultZone: http://eureka:eureka@eureka-7001.com:7001/eureka/,http://eureka:eureka@eureka-7002.com:7002/eureka/,http://eureka:eureka@eureka-7003.com:7003/eureka/  #加入了认证用户和密码的请求连接
+  instance:
+    lease-renewal-interval-in-seconds: 30 #设置心跳间隔时间，默认是30秒
+    lease-expiration-duration-in-seconds: 90 #心跳间隔周期，默认是90秒
+    instance-id: company-8101.com    #在信息列表中显示主机名称
+    prefer-ip-address: true     #访问的路径变成ip地址
+spring:
+  application:
+    name: microcloud-provider-dept
+info:
+  app.name: microcloud-provider
+  app.version: $project.version$
+  app.artifactId: $project.artifactId$

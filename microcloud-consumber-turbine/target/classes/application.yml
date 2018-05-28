@@ -1,0 +1,12 @@
+server:
+  port: 9101
+turbine:
+  app-config: MICROCLOUD-PROVIDER-COMPANY,MICROCLOUD-PROVIDER-DEPT #监控eureka中的应用名称
+  cluster-name-expression:  new String("default")  #监控表达式
+
+eureka:
+  client: #客服端进行EureKa服务配置
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka:eureka@eureka-7001.com:7001/eureka/,http://eureka:eureka@eureka-7002.com:7002/eureka/,http://eureka:eureka@eureka-7003.com:7003/eureka/  #加入了认证用户和密码的请求连接
+  

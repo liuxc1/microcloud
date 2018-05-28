@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: microcloud-zuul-gateway
+server:
+  port: 9501
+  
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+  
+zuul:
+  prefix: /liuxc #设置公共前缀
+  ignored-services:  #忽略掉使用应用名称的访问        
+    "*" 
+  routes:
+    microcloud-provider-company: /company-proxy/**
+    microcloud-provider-dept: /dept-proxy/**
+    microcloud-provider-upload: /upload-proxy/**
+security:
+  basic:
+    enabled: true #开启权限认证
+  user:
+    name: zuul
+    password: zuul  
+eureka:
+  client: #客服端进行EureKa服务配置
+    service-url:
+      defaultZone: http://eureka:eureka@eureka-7001.com:7001/eureka/,http://eureka:eureka@eureka-7002.com:7002/eureka/,http://eureka:eureka@eureka-7003.com:7003/eureka/  #加入了认证用户和密码的请求连接
+  instance:
+    lease-renewal-interval-in-seconds: 30 #设置心跳间隔时间，默认是30秒
+    lease-expiration-duration-in-seconds: 90 #心跳间隔周期，默认是90秒
+    instance-id: gateway-9501.com    #在信息列表中显示主机名称
+    prefer-ip-address: true     #访问的路径变成ip地址
+info:
+  app.name: microcloud-provider
+  app.version: $project.version$
+  app.artifactId: $project.artifactId$   

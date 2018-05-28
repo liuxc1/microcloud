@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="icon" type="image/x-icon"  href="/images/l.ico"/>
+<title>thymeleaf模板渲染</title>
+</head>
+<body>
+	<!-- 第一种方式 -->
+	<p th:text="'用户ID:'+${member.id}" />
+	<p th:text="'用户姓名:'+${member.name}" />
+	<p th:text="'用户年龄:'+${member.age}" />
+	<p th:text="'用户薪资:'+${member.salary}" />
+	<p th:text="'用户生日:'+${member.dirthday}" />
+	<p th:text="'用户生日:'+${#dates.format(member.dirthday,'yyyy-MM-dd')}" />
+	<hr/>
+	<!-- 第二种方式 -->
+	<div th:object="${member}">
+		<p th:text="'用户ID:'+*{id}" />
+		<p th:text="'用户姓名:'+*{name}" />
+		<p th:text="'用户年龄:'+*{age}" />
+		<p th:text="'用户薪资:'+*{salary}" />
+		<p th:text="'用户生日:'+*{dirthday}" />
+		<p th:text="'用户生日:'+*{#dates.format(dirthday,'yyyy-MM-dd')}" />
+	</div>
+	
+	
+</body>
+</html>

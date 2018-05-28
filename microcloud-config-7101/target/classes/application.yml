@@ -1,0 +1,32 @@
+server:
+  port: 7101
+spring:
+  application:
+    name: microcloud-config
+  cloud:          #进行springCloud相关配置
+    config:       #进行springCloudConfig相关配置
+      server:     #设置服务的连接地址
+        git:      #设置Git厂库的连接地址
+          uri: git@github.com:liuxc1/microcloudconfig #当所有的配置找寻不到时选择这个公共的厂库
+          search-paths:
+            - microcloud-*
+#eureka客服端配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:eureka@eureka-7005.com:7005/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 30 #设置心跳间隔时间，默认是30秒
+    lease-expiration-duration-in-seconds: 90 #心跳间隔周期，默认是90秒
+    instance-id: config-7101.com    #在信息列表中显示主机名称
+    prefer-ip-address: true     #访问的路径变成ip地址
+encrypt:
+  keyStore:
+    location: classpath:/server.jks #jks文件路径
+    password: liuxiancheng          #keystore 密码
+    alias: mytestkey                #别名
+    secret: changeit                #keypass
+            
+          
+           
+          

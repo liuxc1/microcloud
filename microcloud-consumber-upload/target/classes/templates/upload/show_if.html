@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="icon" type="image/x-icon"  href="/images/l.ico"/>
+<title>thymeleaf模板渲染</title>
+</head>
+<body>
+	<p th:if="${member.age gt 20}">
+		xxxx
+	</p>
+	<p th:if="${member.name eq 'xxx'}">
+		欢迎xxx访问！
+	</p>
+	<!--switch 分支语句  -->
+	<span th:switch="${member.id}">
+		<p th:case="110">拨打110！</p>
+		<p th:case="120">拨打120！</p>
+		<!--default操作  -->
+		<p th:case="*">拨打119！</p>
+	</span>
+	
+	
+</body>
+</html>

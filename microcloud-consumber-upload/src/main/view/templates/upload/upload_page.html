@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="icon" type="image/x-icon" href="/images/l.ico" />
+<title>文件上传</title>
+</head>
+<body>
+	<form th:action="@{uploading}" method="post" enctype="multipart/form-data">
+		姓名：<input type="text" name="name" /><br /> 
+		文件1：<input type="file" name="photo" /> <br />
+			<input type="submit" value="上传" />
+	</form>
+</body>
+</html>
